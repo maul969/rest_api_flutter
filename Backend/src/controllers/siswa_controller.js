@@ -17,9 +17,6 @@ const siswaController = {
 
     async create(req, res) {
         try {
-            console.log('Content-Type:', req.headers['content-type']);
-            console.log('Request body:', req.body);
-
             const {
                 nipd,
                 nama_lengkap,
@@ -70,9 +67,7 @@ const siswaController = {
             console.error('Error menambahkan data siswa:', error);
 
             res.status(500).json({
-                message: 'Gagal menambahkan data siswa',
-                error: error.message,
-                code: error.code
+                message: 'Gagal menambahkan data siswa'
             });
         }
     },
@@ -134,9 +129,7 @@ const siswaController = {
             console.error('Error memperbarui data siswa:', error);
 
             res.status(500).json({
-                message: 'Gagal memperbarui data siswa',
-                error: error.message,
-                code: error.code
+                message: 'Gagal memperbarui data siswa'
             });
         }
     },
