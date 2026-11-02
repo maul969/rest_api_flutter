@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const user = require('../models/user_model');
 
 const authController = {
@@ -14,7 +15,16 @@ const authController = {
 
             const foundUser = await user.findByUsername(username);
 
-            if (!foundUser || foundUser.password !== String(password)) {
+            // Mendukung password hash bcrypt (diawali $2) maupun teks biasa (sekolah.sql)
+            let passwordCocok = false;
+            if (foundUser) {
+                const tersimpan = String(foundUser.password);
+                passwordCocok = tersimpan.startsWith('$2')
+                    ? await bcrypt.compare(String(password), tersimpan)
+                    : tersimpan === String(password);
+            }
+
+            if (!passwordCocok) {
                 return res.status(401).json({
                     message: 'Username atau password salah'
                 });

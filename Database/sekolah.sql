@@ -29,24 +29,28 @@ CREATE TABLE IF NOT EXISTS `data_siswa` (
   `kelas` enum('10','11','12') DEFAULT NULL,
   `jurusan` enum('RPL','TKJ','DKV','BIDI','AK') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table sekolah.data_siswa: ~2 rows (approximately)
+-- Dumping data for table sekolah.data_siswa: ~5 rows (approximately)
 INSERT INTO `data_siswa` (`id`, `nipd`, `nama_lengkap`, `jenis_kelamin`, `alamat`, `kelas`, `jurusan`) VALUES
-	(1, 242510063, 'Maulidan Alif Wicaksono', 'Laki-Laki', 'rumah', '12', 'RPL'),
-	(2, 242510075, 'Reyvan Darmawan', 'Laki-Laki', 'rumah', '12', 'RPL');
+	(1, 242510063, 'Maulidan Alif Wicaksono', 'Laki-Laki', 'rumah', '12', 'DKV'),
+	(2, 242510075, 'Reyvan Darmawan', 'Laki-Laki', 'rumah', '12', 'RPL'),
+	(3, 242510062, 'Marchel Hugo Putra Ramadhan', 'Laki-Laki', 'griya', '12', 'RPL'),
+	(4, 242510076, 'Rina Rusliana', 'Perempuan', 'griya', '12', 'RPL'),
+	(6, 242510069, 'Novita Damayanti', 'Perempuan', 'Sadangan', '12', 'BIDI');
 
 -- Dumping structure for table sekolah.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table sekolah.user: ~0 rows (approximately)
+-- Dumping data for table sekolah.user: ~1 rows (approximately)
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
-	(1, 'admin', 'admin123');
+	(1, 'admin', '$2a$10$M5ER6DWUdVQ4.WJ921aTBOLOvQ817QzhiMMj5zGDskX7..smQafNy');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

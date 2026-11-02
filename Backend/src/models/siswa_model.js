@@ -3,7 +3,7 @@ const db = require('../config/db');
 const siswa = {
     async findAll() {
         const [rows] = await db.query(
-            'SELECT * FROM data_siswa'
+            'SELECT id, nipd, nama_lengkap, jenis_kelamin, alamat, kelas, jurusan FROM data_siswa ORDER BY id ASC'
         );
         return rows;
     },
@@ -16,18 +16,19 @@ const siswa = {
         return result;
     },
 
-    async update({ nipd, nama_lengkap, jenis_kelamin, alamat, kelas, jurusan }) {
+    // Update berdasarkan id (primary key). nipd ikut bisa diubah.
+    async update({ id, nipd, nama_lengkap, jenis_kelamin, alamat, kelas, jurusan }) {
         const [result] = await db.query(
-            'UPDATE data_siswa SET nama_lengkap = ?, jenis_kelamin = ?, alamat = ?, kelas = ?, jurusan = ? WHERE nipd = ?',
-            [nama_lengkap, jenis_kelamin, alamat, kelas, jurusan, nipd]
+            'UPDATE data_siswa SET nipd = ?, nama_lengkap = ?, jenis_kelamin = ?, alamat = ?, kelas = ?, jurusan = ? WHERE id = ?',
+            [nipd, nama_lengkap, jenis_kelamin, alamat, kelas, jurusan, id]
         );
         return result;
     },
 
-    async delete(nipd) {
+    async delete(id) {
         const [result] = await db.query(
-            'DELETE FROM data_siswa WHERE nipd = ?',
-            [nipd]
+            'DELETE FROM data_siswa WHERE id = ?',
+            [id]
         );
         return result;
     }
