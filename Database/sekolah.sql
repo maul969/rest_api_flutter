@@ -22,22 +22,24 @@ USE `sekolah`;
 -- Dumping structure for table sekolah.data_siswa
 CREATE TABLE IF NOT EXISTS `data_siswa` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nipd` int DEFAULT NULL,
+  `nipd` varchar(20) DEFAULT NULL,
   `nama_lengkap` varchar(50) DEFAULT NULL,
   `jenis_kelamin` enum('Laki-Laki','Perempuan') DEFAULT NULL,
   `alamat` varchar(50) DEFAULT NULL,
   `kelas` enum('10','11','12') DEFAULT NULL,
   `jurusan` enum('RPL','TKJ','DKV','BIDI','AK') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table sekolah.data_siswa: ~5 rows (approximately)
+-- Dumping data for table sekolah.data_siswa: ~8 rows (approximately)
 INSERT INTO `data_siswa` (`id`, `nipd`, `nama_lengkap`, `jenis_kelamin`, `alamat`, `kelas`, `jurusan`) VALUES
-	(1, 242510063, 'Maulidan Alif Wicaksono', 'Laki-Laki', 'rumah', '12', 'DKV'),
-	(2, 242510075, 'Reyvan Darmawan', 'Laki-Laki', 'rumah', '12', 'RPL'),
-	(3, 242510062, 'Marchel Hugo Putra Ramadhan', 'Laki-Laki', 'griya', '12', 'RPL'),
-	(4, 242510076, 'Rina Rusliana', 'Perempuan', 'griya', '12', 'RPL'),
-	(6, 242510069, 'Novita Damayanti', 'Perempuan', 'Sadangan', '12', 'BIDI');
+	(1, '242510063', 'Maulidan Alif Wicaksono', 'Laki-Laki', 'rumah', '12', 'DKV'),
+	(2, '242510075', 'Reyvan Darmawan', 'Laki-Laki', 'rumah', '12', 'RPL'),
+	(3, '242510062', 'Marchel Hugo Putra Ramadhan', 'Laki-Laki', 'griya', '12', 'RPL'),
+	(4, '242510076', 'Rina Rusliana', 'Perempuan', 'griya', '12', 'RPL'),
+	(6, '242510069', 'Novita Damayanti', 'Perempuan', 'Sadangan', '12', 'BIDI'),
+	(8, '242510060', 'Fiqih Al-Farizi', 'Laki-Laki', 'Kampung baru', '11', 'RPL'),
+	(10, '9999999999', 'Test', 'Laki-Laki', 'Rumah', '10', 'AK');
 
 -- Dumping structure for table sekolah.user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -48,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `uniq_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table sekolah.user: ~1 rows (approximately)
+-- Dumping data for table sekolah.user: ~0 rows (approximately)
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
 	(1, 'admin', '$2a$10$M5ER6DWUdVQ4.WJ921aTBOLOvQ817QzhiMMj5zGDskX7..smQafNy');
 
